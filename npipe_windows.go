@@ -472,11 +472,17 @@ func createPipe(address string, first bool) (syscall.Handle, error) {
 	if first {
 		mode |= file_flag_first_pipe_instance
 	}
+	
+	sa, err := initSecurityAttributes()
+	if err != nil {
+		return 0, err
+	}
+	
 	return createNamedPipe(n,
 		mode,
 		pipe_type_byte,
 		pipe_unlimited_instances,
-		512, 512, 0, nil)
+		512, 512, 0, sa)
 }
 
 func badAddr(addr string) PipeError {
