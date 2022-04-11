@@ -1,3 +1,5 @@
+// +build windows
+
 // Copyright 2013 Nate Finch. All rights reserved.
 // Use of this source code is governed by an MIT-style
 // license that can be found in the LICENSE file.
@@ -472,12 +474,12 @@ func createPipe(address string, first bool) (syscall.Handle, error) {
 	if first {
 		mode |= file_flag_first_pipe_instance
 	}
-	
+
 	sa, err := initSecurityAttributes()
 	if err != nil {
 		return 0, err
 	}
-	
+
 	return createNamedPipe(n,
 		mode,
 		pipe_type_byte,
