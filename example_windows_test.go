@@ -3,8 +3,9 @@ package npipe_test
 import (
 	"bufio"
 	"fmt"
-	"github.com/natefinch/npipe"
 	"net"
+
+	"github.com/jannson/npipe"
 )
 
 // Use Dial to connect to a server and read messages from it.
